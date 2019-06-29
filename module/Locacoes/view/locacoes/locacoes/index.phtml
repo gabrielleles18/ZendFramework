@@ -1,0 +1,22 @@
+<a href="<?=$this->url('locacoes',['action'=>'adicionar'])?>" class="btn btn-success">
+    Adicionar</a>
+<table class="table table-stripped">
+    <tr>
+        <th>Código</th>
+        <th>Id Cliente</th>
+    </tr>
+<?php
+foreach ($locacoess as $pes) :
+    ?>
+        <tr>
+            <td><?= $pes->getId_locacoes() ?></td>
+            <td><?= $pes->getCliente_id() ?></td>   
+             <td>
+                <a href="<?=$this->url('locacoes',['action'=>'editar','id_locacoes'=>$pes->getId_locacoes()])?>" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="<?=$this->url('locacoes',['action'=>'remover','id_locacoes'=>$pes->getCliente_id()])?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>         
+        </tr>
+    <?php
+endforeach;
+?>
+</table>

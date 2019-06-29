@@ -1,0 +1,57 @@
+<?php
+$title = "Editar Cliente";
+$this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+<?php
+$form->setAttribute('action',$this->url('cliente',['action'=>'editar', 'id'=>$id]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+$id = $this->form->get('id');
+$nome = $this->form->get('nome');
+$telefone = $this->form->get('telefone');
+$cpf = $this->form->get('cpf');
+
+$nome->setAttribute('class','form-control');
+$telefone->setAttribute('class','form-control');
+$cpf->setAttribute('class','form-control');
+$nome->setAttribute('autofocus','autofocus');
+
+$submit = $this->form->get('submit');
+$submit->setAttribute('class','btn btn-primary btn-lg');
+?>
+<?=$this->formElement($id)?>
+
+<div class="row">
+    <?=$this->formElement($submit)?>
+</div>
+<div class="form-group">
+    <div class="col-md-6">
+        <?=$this->formLabel($nome)?>
+        <?=$this->formElement($nome)?>
+        <?=$this->formElementErrors()->render($nome,['class'=>'help-block'])?>
+    </div>
+</div>
+<div class="form-group" style="margin-top: -15px;">
+    <div class="col-md-6">
+        <?=$this->formLabel($telefone)?>
+        <?=$this->formElement($telefone)?>
+        <?=$this->formElementErrors()->render($telefone,['class'=>'help-block'])?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <?=$this->formLabel($cpf)?>
+        <?=$this->formElement($cpf)?>
+        <?=$this->formElementErrors()->render($cpf,['class'=>'help-block'])?>
+    </div>
+</div>
+
+
+<div class="row">
+    <?=$this->formElement($submit)?>
+    <a href="<?=$this->url('cliente',['action'=>'index'])?>" class="btn btn-warning">
+    Voltar</a>
+</div>
